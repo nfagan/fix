@@ -11,9 +11,11 @@ conf.INTERFACE.use_mouse = true;
 % Stimulus properties
 conf.STIMULI.setup.img1.color = [255, 0, 0];
 conf.STIMULI.setup.img1.target_duration = 0.3;
+conf.STIMULI.setup.img1.size = [50, 50];
 
-% Amount of time to show a square before moving to the next one,
+% Amount of time to show a square before moving iti,
 % in the event that no fixation is made.
-conf.TIMINGS.time_in.fixation = inf;
+conf.TIMINGS.time_in.fixation = 4;
+conf.TIMINGS.time_in.iti = 1;
 
 fix.task.start( conf );

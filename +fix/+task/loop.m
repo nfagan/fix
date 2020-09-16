@@ -17,4 +17,8 @@ update( program.Value.frame_timer );
 % time spent in bounds of each target.
 update( program.Value.updater );
 
+if ( ptb.util.is_key_down(ptb.keys.space) )
+  program.Value.advance_face_point = true;
+end
+
 end

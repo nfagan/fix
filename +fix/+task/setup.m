@@ -32,6 +32,8 @@ updater = make_updater( program );
 sampler = make_sources( program, updater, window, conf );
 make_targets( program, window, updater, sampler, stimuli, stim_setup );
 
+ListenChar( 2 );
+
 end
 
 function program = make_program( conf )
@@ -139,6 +141,7 @@ function make_states(program, conf)
 states = containers.Map();
 states('new_trial') = fix.task.states.new_trial( program, conf );
 states('fixation') = fix.task.states.fixation( program, conf );
+states('iti') = fix.task.states.iti( program, conf );
 
 program.Value.states = states;
 

@@ -4,4 +4,6 @@ function shutdown(program)
 % case of error during the task.
 fprintf( '\n Shutting down ...\n' );
 
+ListenChar( 0 );
+
 end

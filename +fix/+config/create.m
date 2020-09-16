@@ -49,6 +49,7 @@ time_in.present_image = 2;
 time_in.image_success = 1;
 time_in.image_error = 1;
 time_in.fixation = 1;
+time_in.iti = 1;
 
 TIMINGS.time_in = time_in;
 

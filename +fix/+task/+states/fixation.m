@@ -47,12 +47,7 @@ end
 function exit(state, program)
 
 states = program.Value.states;
-
-if ( state.UserData.acquired_fixation )
- next( state, states('new_trial') );
-else
- next( state, states('new_trial') );
-end
+next( state, states('iti') );
 
 end
 
