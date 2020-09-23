@@ -3,6 +3,38 @@ conf = fix.config.reconcile;
 conf.SCREEN.rect = [0, 0, 1024, 768];
 conf.STRUCTURE.face_calibration_pixel_dimensions = [400, 400];
 
+% corner_offset: how far inwards from the corners are the target points.
+% Larger values push the corner points closer to the middle of the face.
+% Default: 0.1
+conf.STRUCTURE.face_calibration_point_settings.corner_offset = 0.1;
+
+% eye_height: the proportional distance between the top and bottom eye
+% target points.
+% Default: 0.075
+conf.STRUCTURE.face_calibration_point_settings.eye_height = 0.075;
+
+% eye_width: the proportional distance between the left and right eye
+% target points.
+% Default: 0.1
+conf.STRUCTURE.face_calibration_point_settings.eye_width = 0.1;
+
+% eye_y_offset: the proportional distance from the top of the face to the
+% middle of the "eye roi". Larger values push the eyes downwards in the
+% face.
+% Default: 0.3
+conf.STRUCTURE.face_calibration_point_settings.eye_y_offset = 0.3;
+
+% mouth_height: the proportional distance between the top and bottom mouth
+% target points.
+% Default: 0.075
+conf.STRUCTURE.face_calibration_point_settings.mouth_height = 0.075;
+
+% mouth_y_offset: the proportional distance from the top of the face to the
+% middle of the "mouth roi". Larger values push the mouth downwards in the
+% face.
+% Default: 0.6
+conf.STRUCTURE.face_calibration_point_settings.mouth_y_offset = 0.6;
+
 conf.INTERFACE.is_debug = false;
 
 % Set to false to use eyelink.
