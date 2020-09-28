@@ -49,6 +49,13 @@ function exit(state, program)
 states = program.Value.states;
 next( state, states('iti') );
 
+if ( state.UserData.acquired_fixation )
+  fprintf( '\n Acquired fixation at time: %0.2f.' ...
+    , elapsed(program.Value.task) );
+else
+  fprintf( '\n Failed to acquire fixation.' );
+end
+
 end
 
 function pos = get_fixation_target_position(program, window_rect)
