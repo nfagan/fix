@@ -32,6 +32,8 @@ updater = make_updater( program );
 sampler = make_sources( program, updater, window, conf );
 make_targets( program, window, updater, sampler, stimuli, stim_setup );
 
+make_reward_manager( program, conf );
+
 ListenChar( 2 );
 
 end
@@ -62,6 +64,32 @@ task.Loop = @(t) fix.task.loop(t, program);
 task.exit_on_key_down( interface.stop_key );
 
 program.Value.task = task;
+
+end
+
+function make_reward_manager(program, conf)
+
+interface = get_interface( conf );
+structure = get_structure( conf );
+
+reward_manager = [];
+
+if ( interface.use_reward )
+  reward_manager = interface.get_reward_manager( program, conf );
+end
+
+key_press_reward_amount = structure.key_press_reward_amount;
+reward_func = interface.give_reward;
+deliver_reward = ...
+  @() reward_func(reward_manager, 1, key_press_reward_amount);
+
+program.Value.reward_manager = reward_manager;
+
+program.Value.key_press_reward = struct( ...
+    'timer', ptb.Clock() ...
+  , 'interval', 0.5 ...
+  , 'deliver', deliver_reward ...
+);
 
 end
 
@@ -232,4 +260,8 @@ end
 
 function screen = get_screen(conf)
 screen = conf.SCREEN;
+end
+
+function structure = get_structure(conf)
+structure = conf.STRUCTURE;
 end

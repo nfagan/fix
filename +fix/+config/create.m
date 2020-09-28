@@ -30,6 +30,11 @@ INTERFACE.use_mouse = true;
 INTERFACE.open_window = true;
 INTERFACE.skip_sync_tests = false;
 INTERFACE.is_debug = true;
+INTERFACE.use_reward = false;
+INTERFACE.get_reward_manager = @(program, conf) [];
+INTERFACE.shutdown_reward_manager = @(manager, program) [];
+INTERFACE.give_reward = @(manager, channel, amount) [];
+INTERFACE.reward_key = KbName( 'r' );
 
 %	SCREEN
 SCREEN = struct();
@@ -87,6 +92,7 @@ STIMULI.setup.error_img = struct( ...
 STRUCTURE = struct();
 STRUCTURE.face_calibration_pixel_dimensions = [400, 400];
 STRUCTURE.face_calibration_point_settings = fix.util.default_calibration_point_settings();
+STRUCTURE.key_press_reward_amount = 100;
 
 % EXPORT
 conf.PATHS = PATHS;

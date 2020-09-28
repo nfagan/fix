@@ -21,4 +21,25 @@ if ( ptb.util.is_key_down(ptb.keys.space) )
   program.Value.advance_face_point = true;
 end
 
+if ( is_reward_key_down(program) && ...
+     key_press_reward_timer_elapsed(program) )
+  reset( program.Value.key_press_reward.timer );
+  program.Value.key_press_reward.deliver();
+end
+  
+end
+
+function tf = key_press_reward_timer_elapsed(program)
+
+timer = program.Value.key_press_reward.timer;
+interval = program.Value.key_press_reward.interval;
+
+tf = elapsed( timer ) >= interval;
+
+end
+
+function tf = is_reward_key_down(program)
+
+tf = ptb.util.is_key_down( program.Value.config.INTERFACE.reward_key );
+
 end

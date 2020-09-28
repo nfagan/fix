@@ -35,10 +35,20 @@ conf.STRUCTURE.face_calibration_point_settings.mouth_height = 0.075;
 % Default: 0.6
 conf.STRUCTURE.face_calibration_point_settings.mouth_y_offset = 0.6;
 
-conf.INTERFACE.is_debug = false;
+% Reward from pressing the reward key,
+conf.STRUCTURE.key_press_reward_amount = 100;
 
+conf.INTERFACE.is_debug = false;
 % Set to false to use eyelink.
 conf.INTERFACE.use_mouse = true;
+% Set to false to skip reward.
+conf.INTERFACE.use_reward = true;
+% Reward key.
+conf.INTERFACE.reward_key = ptb.keys.r();
+
+conf.INTERFACE.get_reward_manager = @fix.util.get_brains_reward_manager;
+conf.INTERFACE.give_reward = @fix.util.brains_deliver_reward;
+conf.INTERFACE.shutdown_reward_manager = @fix.util.shutdown_brains_reward_manager;
 
 % Stimulus properties
 conf.STIMULI.setup.img1.color = [255, 0, 0];
